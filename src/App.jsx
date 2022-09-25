@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Link, Navigate } from 'react-router-dom';
 import { RegisterPage } from 'pages/RegisterPage';
 import { LoginPage } from 'pages/LoginPage';
 import { ContactsPage } from 'pages/ContactsPage';
@@ -33,6 +33,7 @@ export default function App() {
             }
           />
         </Route>
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
 
       {/* <div>

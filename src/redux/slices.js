@@ -78,8 +78,11 @@ export const contactsSlice = createSlice({
     [deleteContact.pending](state) {
       state.isLoading = true;
     },
-    [deleteContact.fulfilled](state) {
+    [deleteContact.fulfilled](state, action) {
       state.isLoading = false;
+      state.contacts = state.contacts.filter(
+        contact => contact.id !== action.payload.id
+      );
     },
     [editContact.fulfilled]: (state, { payload }) => {
       state.contacts = state.contacts.map(contact =>

@@ -19,7 +19,6 @@ export const logout = createAsyncThunk('user/logout', async userCredentials => {
 
 export const addContact = createAsyncThunk('contact/add', async contact => {
   const contacts = await userApi.getContacts();
-  console.log(contacts);
   if (contacts.find(c => c.name === contact.name)) {
     return Promise.reject(
       new Error(`Contact ${contact.name} already exists. Try other name`)
@@ -41,6 +40,7 @@ export const editContact = createAsyncThunk('contact/edit', async contact => {
 
 export const deleteContact = createAsyncThunk('contact/delete', async id => {
   const data = await userApi.deleteContact(id);
+  data.id = id;
   return data;
 });
 

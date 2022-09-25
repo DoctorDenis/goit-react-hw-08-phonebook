@@ -1,11 +1,7 @@
 import { Button } from 'react-bootstrap';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import {
-  deleteContact,
-  editContact,
-  getContacts,
-} from '../../redux/operations';
+import { deleteContact, editContact } from '../../redux/operations';
 
 export function ContactItem({ contact: { id, name, number }, index }) {
   const [isEdited, setIsEdited] = useState(false);
@@ -21,12 +17,10 @@ export function ContactItem({ contact: { id, name, number }, index }) {
       number: phone,
     };
     dispatch(editContact(contact));
-    // dispatch(getContacts());
   }
 
   function deleteBtnClickHandler() {
     dispatch(deleteContact(id));
-    dispatch(getContacts());
   }
 
   return (
